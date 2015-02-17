@@ -1,0 +1,531 @@
+/*---------------------------------------------------------------------------------
+	Project Name: Shopping List
+----------------------------------------------------------------------------------*/
+
+/*---------------------------------------------------------------------------------
+   http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+---------------------------------------------------------------------------------*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*---------------------------------------------------------------------------------
+   Common Styles
+---------------------------------------------------------------------------------*/
+/*float styles*/
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+
+}
+
+body {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	font-family: 'Annie Use Your Telescope', cursive;
+	background-image: url(../images/corkboard.jpg);
+
+
+}
+#wrapper {
+	/*
+	Trevor Nowalk - 2015-02-16
+	The reason that the background/height isn't scaling well is that the section's
+	are absolutely positioned.  When you absolutely position an element, it takes
+	it out of the normal flow of the DOM, meaning the #wrapper doesn't know how tall
+	the section is and can't grow with it.
+	*/
+	position: relative;
+	width:600px;
+	max-width:95%;
+	/*
+	Trevor Nowalk - 2015-02-16
+	Now that we're relying on the height of the inner .right to grow with the
+	content, we don't need to set the height of the wrapper as it will always
+	be just big enough to contain the inner content.
+	*/
+	/*height: 95%;*/
+	min-height: 330px; /* GERRY + I added this after trevor!!*/
+	margin: 2em auto;
+	font-family: 'Annie Use Your Telescope', cursive;
+	background-image: url(../images/yellow_paper.jpg);
+
+	-webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.2), inset 0 0 30px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.2), inset 0 0 30px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.2), inset 0 0 30px rgba(0, 0, 0, 0.2);
+}
+
+#wrapper:before, #wrapper:after
+{
+	position: absolute;
+	width: 40%;
+	height: 10px;
+	content: ' ';
+	left: 12px;
+	bottom: 12px;
+	background: transparent;
+	-webkit-transform: skew(-5deg) rotate(-5deg);
+	-moz-transform: skew(-5deg) rotate(-5deg);
+	-ms-transform: skew(-5deg) rotate(-5deg);
+	-o-transform: skew(-5deg) rotate(-5deg);
+	transform: skew(-5deg) rotate(-5deg);
+	-webkit-box-shadow: 5px 16px 22px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 5px 16px 22px rgba(0, 0, 0, 0.5);
+	box-shadow: 5px 6px 22px rgba(0, 0, 0, 0.5);
+	z-index: -1;
+} 
+
+#wrapper:after
+{
+	left: auto;
+	right: 12px;
+	-webkit-transform: skew(5deg) rotate(5deg);
+	-moz-transform: skew(5deg) rotate(5deg);
+	-ms-transform: skew(5deg) rotate(5deg);
+	-o-transform: skew(5deg) rotate(5deg);
+	transform: skew(5deg) rotate(5deg);
+}
+
+
+section {
+	/*
+	Trevor Nowalk - 2015-02-16
+	As mentioned above, the absolute positioning pulls the sections out of the
+	normal flow of the DOM and it's parent (wrapper) doesn't know how tall to be
+	so it cannot grow as the content is added
+	*/
+	/*position: absolute;*/
+	position: relative;
+}
+
+.left {
+	width: 10%;
+	/*
+	Trevor Nowalk - 2015-02-16
+	Because we're not positioning this absolutely, we don't need the top/left
+	properties.  Instead, we're going to use the float property to float this to
+	the left
+	*/
+	/*top: 0;*/
+	/*left: 0;*/
+	float: left;
+	/*background-image: url(../images/corkboard.jpg);*/
+	font-weight: 400;
+	/*
+	Trevor Nowalk - 2015-02-16
+	Another silly side effect of floats and complicated positioning is that the
+	.left doesn't grow to be 100% height of #wrapper which won't bring your border
+	down all the way.  We can move this to the .right which grows as the content
+	grows
+	*/
+	/*border-right: 2px solid red;*/
+}
+
+.right {
+	width: 90%;
+	/*
+	Trevor Nowalk - 2015-02-16
+	Because we're not positioning this absolutely, we don't need the top/left
+	properties.  Instead, we're going to use the float property to float this to
+	the right
+	*/
+	/*top: 0;*/
+	/*right: 0;*/
+	float: right;
+	font-weight: 300;
+	/*background-image: url(../images/yellow_paper.jpg);*/
+	color:navy;
+	/*
+	Trevor Nowalk - 2015-02-16
+	Moving the border over from .left.  Also adding a padding to the bottom to
+	push the bottom of .right just a bit away from the bottom of the content to
+	give us a little space to work with.
+	*/
+	border-left: 2px solid #ab1411;
+	padding-bottom: 50px;
+	min-height: 330px; /* GERRY + added this post trevor*/
+}
+
+/*
+Trevor Nowalk - 2015-02-16
+Creating a new class that will clear the floated elements
+*/
+.clear {
+	clear: both;
+}
+
+.right:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+
+
+ #copyright{
+	position: absolute;
+	margin-top: 1em;
+ 	bottom: 0%;
+	color:#085052;
+	padding-left: 2.7em;
+	padding-bottom: 1.5em;
+	font-size: 0.7em;
+}
+
+#clip{
+	background-image: url(../images/paperclip.png);
+	background-repeat: no-repeat;
+	position: relative;
+	width: 5em;
+	height: 8em;
+	top:-50px;
+	left: -20px;
+	z-index: 1000;
+}
+
+/*---------------------------------------------------------------------------------
+   Info Section Styles
+---------------------------------------------------------------------------------*/
+
+.header, div.count-container, footer {
+	position: relative;
+	width: 30%;
+
+	text-align: center;
+	float:left;
+}
+
+header {
+	height: 4em;
+	margin: .5em 0 0em;
+}
+
+
+
+/*
+Trevor Nowalk - 2015-02-16
+Be very careful with rules like this.  This is what I call a "greedy selector" as
+it will match ALL h1's in the DOM.  In your project, you only have a single h1 but
+if you're working on a bigger project that might have multiple h1's then a rule
+like this will style all of them which might not be the exepcted result.  Generally
+you'll want to use some sort of class or id to create your rules unless you are
+creating something generic enough to apply to all instances of the element
+*/
+h1 {
+	position: relative;
+	top: 0.1em;
+	/*
+	Trevor Nowalk - 2015-02-16
+	Don't need the width now that .count-container is floated properly to the right
+  */
+	/*width: 60%;*/
+	font-family: 'Annie Use Your Telescope', cursive;
+	font-size: 2.5em;
+	text-align: left;
+	padding-left: .5em;
+	/*
+	Trevor Nowalk - 2015-02-16
+	Don't need the padding right any more now that we're floating the count properly
+	*/
+	/*padding-right: 2em;*/
+	color:#0c7375;
+	font-weight: 600;
+	float:left;
+	text-transform: uppercase;
+
+	
+}
+
+.count-container {
+ /*
+ Trevor Nowalk - 2015-02-16
+ Chaning the positioning of .right to relative affected the way the float is
+ rendered, need to change this to float: right and now that we're floated right
+ we don't need the width.  Now that the element is floated properly, the
+ positioning needs to be adjusted using margin-right (to push it away from
+ the right side of #wrapper)
+ */
+ /*width: 40%;*/
+ float: right;
+ /*float:left;*/
+ margin-right: 4.15em;
+ text-align: right;
+}
+
+.count-container li.count{
+	text-align: center;
+	font-size: 1em;
+	color: #0c7375;
+	float: left;
+	padding-right: 1em;
+}
+
+#do, #done, #total {
+	color: #ab1411;
+	font-size: 3em;
+}
+
+
+
+
+/*---------------------------------------------------------------------------------
+   List App Section Styles
+---------------------------------------------------------------------------------*/
+
+
+.point{
+	cursor: pointer;
+
+}
+/*
+.hover{
+	color: #11a8ab!important;
+	cursor: pointer;
+}
+*/
+
+/*Input Text Box*/
+.textBox {
+  padding-left: 1em;
+  width: 100%;
+  margin-top: -.45em;
+  margin-bottom: -.5em;
+ border-style: none;
+  font-size: 2em;
+  vertical-align: bottom;
+  color: #085052;
+  background-color: transparent;
+
+}
+
+input {
+font-family: 'Annie Use Your Telescope', cursive;
+	font-weight: 400;
+	font-size: 2em;
+}
+
+input:focus {
+	outline: none;
+}
+
+::-webkit-input-placeholder {
+   color:rgba(5,45,46, 0.5);
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: rgba(5,45,46, 0.5);  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: rgba(5,45,46, 0.5);  
+}
+
+:-ms-input-placeholder {  
+   color: rgba(5,45,46, 0.5);  
+}
+
+#gotit{
+	text-transform: uppercase;
+}
+
+/*List Styles*/
+#list {
+	position: relative;
+	list-style-type: none;
+	width: 100%;
+	/*
+	Trevor Nowalk - 2015-02-16
+	Since the margin-top was removed from the .item rule, the first list item
+	doesn't line up in the right spot.  We make up for that by positioning the
+	ul correctly with a margin-top which pushes the ul away from the input
+	*/
+	margin-top: 1em;
+
+
+}
+
+#list li {
+	position: relative;
+	/*background-color: #3498db;*/
+	width: 100%;
+	height: 2.75em;
+	/*
+	Trevor Nowalk - 2015-02-16
+	Adding the padding-top here to make up for the margin-top that was removed from
+	the .item rule
+	*/
+	padding-top: 1em;
+	
+}
+
+
+
+/*Span with Class item*/
+.item {
+	position: absolute;
+	left: 0;
+	width: 78%;
+	font-size: 2em;
+	
+	padding-left:0.8em;
+	/*
+	Trevor Nowalk - 2015-02-16
+	The margin-top here is what is throwing off the "height" of the li, which is
+	what causes the "click box" to go half way up the previous li.  If you remove
+	the margin from here and replace it with a padding on the li, you will get the
+	same style and won't have the issue with the click box.
+	*/
+	/*margin-top: 1em;*/
+	cursor: pointer;
+	color:#0c7375;
+	
+}
+
+.item:hover{
+	color: #085052!important;
+}
+
+/*Delete icon using div*/
+.delete {
+	position: absolute;
+	right: 0;
+	display: inline-block;
+	cursor: pointer;
+}
+
+/*Checked off list item style*/
+.checked span.item{
+	text-decoration: line-through;
+	font-style: italic;
+}
+
+.checked {
+
+}
+
+
+
+/*---------------------------------------------------------------------------------
+   Media Queries for responsiveness
+---------------------------------------------------------------------------------*/
+
+@media only screen and (min-width: 481px) and (max-width: 800px){
+	h1 {
+		font-size: 1.5em;
+	}
+
+	.count {
+		font-size: 1.5em;
+	}
+
+	#do, #done, #total {
+		font-size: 1.5em;
+	}
+
+	footer {
+		margin: 0.2em 0;
+	}
+
+	footer p {
+		font-size: 1em;
+		padding: 0.5em;
+	}
+
+	footer span {
+		font-size: 1.2em;
+	}
+}
+
+@media only screen and (min-width: 300px) and (max-width: 480px){
+
+	header {
+		margin-top: 2.3em;
+	}
+
+	h1 {
+		font-size: 1.5em;
+	}
+
+	.count {
+		font-size: 1.5em;
+	}
+
+	#do, #done, #total {
+		font-size: 1.5em;
+	}
+
+	footer {
+		margin: 0.5em 0;
+	}
+
+	footer p {
+		font-size: 0.8em;
+		padding: 1em 0.5em;
+	}
+
+	footer span {
+		font-size: 1em;
+	}
+
+}

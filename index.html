@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+
+		<title>Shopping List - A Thinkful Project</title>
+
+		<!-- Meta Tags -->
+		<meta charset="utf-8"/>
+		<meta name="description" content="Shopping List"/>
+		<meta name="Gerry Leonard" content="Gerry Leonard' shopping list"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="images/favicon.ico">
+
+		<!-- Stylesheets -->
+		<link href='http://fonts.googleapis.com/css?family=Annie+Use+Your+Telescope' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="styles/style.css"/>
+
+		<!-- JavaScript -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+ <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+
+
+
+
+	</head>
+	<body>
+	<div id="wrapper">
+		<section class="left">
+		<div id ="clip"></div>
+
+
+		</section>
+
+		<section class="right"> <!-- App Section -->
+			<header>
+				<a href="index.html" class="logo"></a>
+				<h1>Shopping list</h1>
+					<ul class="count-container">
+
+				<li class="count"><span id="do">0</span> TO DO</li>
+
+				<li class="count"><span id="done">0</span> DONE</li>
+
+				<!--<li class="count"><span id="total">0</span> TOTAL</li>-->
+
+			</ul>
+			</header>
+
+			<form>
+				<input type="text" name="newItem" id="newItem" class="textBox" autocomplete="off" placeholder="Add items.." required/>
+			</form>
+
+
+
+
+
+			<ul id="list">
+				<li class="listitem tap">
+					<span class="item info">Tap to check/uncheck</span>
+
+				</li>
+			<!--<li class="listitem checked">
+					<span class="item default">I 'm checked off.</span>
+				</li>-->
+				<li class="listitem drag">
+					<span class="item info">Drag to reorder.</span>
+
+				</li>
+				<li class="listitem refresh">
+					<span class="item info">Click pin to refresh app.</span>
+
+				</li>
+				<li class="listitem ok">
+					<span class="item info" id="gotit">Double Click Me to Clear list</span>
+
+				</li>
+
+
+				<!--<li class="listitem">
+					<span class="item">Tap X  to remove.</span>
+				</li>-->
+			</ul>
+
+		
+
+				<p id="copyright">designed + developed by Gerry Leonard</p>
+			
+
+		</section>
+
+
+			<!--
+			Trevor Nowalk - 2015-02-16
+			Floating elements also takes them out of the normal flow, so #wrapper isn't
+			going to know how tall to be.  Luckily we can clear a float, which resets the
+			normal flow and #wrapper can properly calculate how tall it is going to be.
+			We can't do that with absolutely positioned elements, hence why we switched
+			to floats
+			-->
+			<div class="clear"></div>
+
+			
+		</div>
+
+		<script src="js/app.js"></script>
+	</body>
+</html>
