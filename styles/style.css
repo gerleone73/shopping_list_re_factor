@@ -469,10 +469,10 @@ input:focus {
 /*---------------------------------------------------------------------------------
    Media Queries for responsiveness
 ---------------------------------------------------------------------------------*/
-
+/*
 @media only screen and (min-width: 481px) and (max-width: 800px){
 	h1 {
-		font-size: 1.5em;
+		font-size: 2.3em;
 	}
 
 	.count {
@@ -480,52 +480,62 @@ input:focus {
 	}
 
 	#do, #done, #total {
+		font-size: 2.3em;
+	}
+
+
+	.item{
 		font-size: 1.5em;
 	}
 
-	footer {
-		margin: 0.2em 0;
-	}
-
-	footer p {
-		font-size: 1em;
-		padding: 0.5em;
-	}
-
-	footer span {
-		font-size: 1.2em;
-	}
+	
 }
+*/
 
-@media only screen and (min-width: 300px) and (max-width: 480px){
+@media only screen and (max-width: 640px) {
 
 	header {
-		margin-top: 2.3em;
-	}
+	height: 4em;
+	margin: 2em 0 -1em;
+}
 
 	h1 {
-		font-size: 1.5em;
+		font-size: 1.75em;
+	}
+
+	.count-container{
+		margin-right: 0.25em;
 	}
 
 	.count {
-		font-size: 1.5em;
+		font-size: 1em;
 	}
 
 	#do, #done, #total {
-		font-size: 1.5em;
+		font-size: 1.75em;
+	}
+	 .item{
+		font-size: 1.2em;
+	}
+	.textBox{
+		font-size: 1.2em;
 	}
 
-	footer {
-		margin: 0.5em 0;
+	#list li{
+		padding-top: 1.5em;
 	}
-
-	footer p {
-		font-size: 0.8em;
-		padding: 1em 0.5em;
+	#copyright{
+		padding-left: 1.5em;
 	}
-
-	footer span {
-		font-size: 1em;
-	}
+	#clip{
+	background-image: url(../images/paperclip.png);
+	background-repeat: no-repeat;
+	position: relative;
+	width: 5em;
+	height: 8em;
+	top:-70px;
+	left: -20px;
+	z-index: 1000;
+}
 
 }
