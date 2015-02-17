@@ -234,15 +234,16 @@ Creating a new class that will clear the floated elements
 }
 
 #clip{
-	background-image: url(../images/paperclip.png);
+	background-image: url(../images/pin.png);
 	background-repeat: no-repeat;
 	position: relative;
-	width: 5em;
-	height: 8em;
-	top:-50px;
-	left: -20px;
+	width: 3.5em;
+	height: 3em;
+	top:.85em;
+	left:0px;
 	z-index: 1000;
 }
+
 
 /*---------------------------------------------------------------------------------
    Info Section Styles
@@ -321,7 +322,7 @@ h1 {
 	padding-right: 1em;
 }
 
-#do, #done, #total {
+#do, #done, #itemcount {
 	color: #ab1411;
 	font-size: 3em;
 }
@@ -511,7 +512,7 @@ input:focus {
 		font-size: 1em;
 	}
 
-	#do, #done, #total {
+	#do, #done, #itemcount {
 		font-size: 1.75em;
 	}
 	 .item{
@@ -528,13 +529,13 @@ input:focus {
 		padding-left: 1.5em;
 	}
 	#clip{
-	background-image: url(../images/paperclip.png);
+	background-image: url(../images/pin-small.png);
 	background-repeat: no-repeat;
 	position: relative;
-	width: 5em;
-	height: 8em;
-	top:-70px;
-	left: -20px;
+	/*width: 5em;
+	height: 8em;*/
+	top:35px;
+	/*left: -20px;*/
 	z-index: 1000;
 }
 

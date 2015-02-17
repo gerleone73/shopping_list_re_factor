@@ -45,12 +45,14 @@ $(document).ready(function(){
     });
 
 	 function newlist(){
+	 	itemCount =0;
 	 	doCount = 0;
 		 doneCount = 0;
 		updateCount();
 
 		console.log(doCount);
 		console.log(doneCount);
+		console.log(itemCount)
 	 }
 
 
@@ -61,16 +63,60 @@ newlist();
 
 	var doCount = 4;
 	var doneCount = 0;
+	var itemCount = 4;
 	updateCount();
 
 	//shopping();
 
 
-
+removal();
 
 	setFocus();
 
-	$('#list').sortable();
+$('#list').sortable();
+
+function removal(){
+
+
+  var removeIntent = false;
+        $('#list').sortable({
+            over: function () {
+                removeIntent = false;
+            },
+            out: function () {
+                removeIntent = true;
+            },
+            beforeStop: function (event, ui) {
+            	
+               if(removeIntent == true) {
+                  		ui.item.remove();
+                  		itemCount--;
+                  		doCount--;
+                  		updateCount();
+                  }
+/*
+                 if($(this).hasClass("checked")) {
+
+						console.debug($(this));
+					
+						doneCount == doneCount;
+						itemCount--
+						updateCount();
+
+					} else {
+
+						console.debug($(this));
+						doneCount == doneCount;
+						doCount--;
+						updateCount();
+					}
+		*/				
+           
+    }
+            
+        
+ });
+ }
 
 	$("form").submit(function(event){
 
@@ -99,13 +145,17 @@ newlist();
 
 	/*--- Check off Function ---*/
 	function checkoff(){
+		
+
 		console.log("Checking Off...");
 		if($(this).hasClass("checked")) {
-
+			
+			
 			console.debug($(this));
 			doCount++;
 			doneCount--;
 			updateCount();
+
 
 		} else {
 
@@ -161,6 +211,7 @@ $(".item").hover(function() {
 	function updateCount() {
 		$('#do').text(doCount);
 		$('#done').text(doneCount);
+		$('#itemcount').text(itemCount);
 		/* Trevor - Don't need this any more */
 		/*if(doCount == 17){
 	$('#wrapper').css('height', '1500');
